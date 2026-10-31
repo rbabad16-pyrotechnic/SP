@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background-color: #ffffff;
+  color: #333;
+  overflow-x: hidden; /* Prevents horizontal overflow scroll on small screens */
+  width: 100%;
+}
+
+@keyframes scroll-down {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  25%,
+  65% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(300%);
+    opacity: 0;
+  }
+}
+
+/* Ensure images and videos shrink on small screens */
+img, video, canvas, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px; /* Optimized padding for small mobile displays */
+}
+
+@media (max-width: 767px) {
+  .site-header-nav {
+    transition:
+      min-height 180ms cubic-bezier(0.2, 0.7, 0.2, 1),
+      padding 180ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
+  .site-header-logo {
+    transition:
+      width 180ms cubic-bezier(0.2, 0.7, 0.2, 1),
+      height 180ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
+  .site-header-title,
+  .site-header-subtitle {
+    transition: font-size 180ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+}
+
+@media (max-width: 767px) and (prefers-reduced-motion: reduce) {
+  .site-header-nav,
+  .site-header-logo,
+  .site-header-title,
+  .site-header-subtitle {
+    transition-duration: 0.01ms;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .nav-links {
+    gap: 15px;
+    flex-wrap: wrap; /* Allows navigation items to wrap if screen is narrow */
+    justify-content: center;
+  }
+
+  .hero h2 {
+    font-size: 1.8rem; /* Adjusted down from 2.5rem for mobile viewports */
+  }
+
+  .about-content {
+    flex-direction: column;
+  }
+
+  .stats {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
